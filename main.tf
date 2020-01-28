@@ -37,6 +37,10 @@ resource "aws_instance" "jump" {
   vpc_security_group_ids      = [aws_security_group.jump.id]
   subnet_id                   = data.terraform_remote_state.vpc.outputs.public_subnets[0]
   associate_public_ip_address = true
+  
+  root_block_device {
+    volume_size = var.aws_instance_volume_size
+  }
 
   tags = var.aws_instance_jump_tags
 }

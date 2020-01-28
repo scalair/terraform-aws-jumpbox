@@ -18,7 +18,7 @@ variable "vpc_state_region" {
 ##################
 variable "aws_security_group_cidr_blocks" {
   description = "List of CIDR to allow SSH from"
-  type        = "list"
+  type        = list
 }
 
 variable "aws_security_group_jump_tags" {
@@ -50,6 +50,12 @@ variable "aws_instance_ami" {
 
 variable "aws_instance_key_name" {
   description = "The key name of the Key Pair to use for the instance"
+}
+
+variable "aws_instance_volume_size" {
+  description = "The size of the volume in gibibytes (GiB)"
+  type        = string
+  default     = "30"
 }
 
 variable "aws_instance_jump_tags" {
